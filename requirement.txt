@@ -1,0 +1,28 @@
+# Scraping
+selenium
+beautifulsoup4
+requests
+
+# Data & ML
+pandas
+numpy
+scikit-learn
+xgboost
+imbalanced-learn
+optuna
+shap
+
+# PDF Parsing
+pymupdf
+
+# AI Layer
+langchain
+langchain-community
+openai
+groq
+
+# Deployment
+streamlit
+
+# Misc
+python-dotenv
