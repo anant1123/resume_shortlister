@@ -14,9 +14,8 @@ __pycache__/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# ── Data — raw large files
-data/raw/
-Resume.csv
+# ── Data — all large files
+
 
 # ── Models — large pkl files
 models/*.pkl
