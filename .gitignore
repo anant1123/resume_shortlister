@@ -1,0 +1,45 @@
+# ── Environment
+.env
+.venv/
+venv/
+env/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ── Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Data — raw large files
+data/raw/
+Resume.csv
+
+# ── Models — large pkl files
+models/*.pkl
+models/*.joblib
+
+# ── Reports — generated images
+reports/*.png
+reports/*.jpg
+
+# ── IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# ── OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs
+*.log
+logs/
+
+# ── UV / pip
+uv.lock
+*.lock

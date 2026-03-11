@@ -1,0 +1,1 @@
+["tfidf_cosine_sim", "embedding_cosine_sim", "reason_resume_sim", "skill_overlap_count", "skill_overlap_ratio", "resume_skill_count", "jd_skill_count", "skill_gap", "resume_length", "jd_length", "length_ratio", "role_in_resume", "seniority_match", "skill_diversity"]

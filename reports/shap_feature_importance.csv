@@ -1,0 +1,15 @@
+Feature,Mean_SHAP_Value
+reason_resume_sim,0.74766684
+resume_length,0.17906854
+tfidf_cosine_sim,0.15380208
+jd_length,0.12876016
+length_ratio,0.12831886
+embedding_cosine_sim,0.10022662
+skill_overlap_ratio,0.08648276
+jd_skill_count,0.07873292
+resume_skill_count,0.065054685
+skill_overlap_count,0.057277974
+skill_diversity,0.044284396
+skill_gap,0.041857906
+seniority_match,0.04027985
+role_in_resume,0.017947992
