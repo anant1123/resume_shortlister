@@ -14,12 +14,6 @@ __pycache__/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# ── Data — all large files
-
-
-# ── Models — large pkl files
-models/*.pkl
-models/*.joblib
 
 # ── Reports — generated images
 reports/*.png
