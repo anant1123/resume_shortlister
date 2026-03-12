@@ -15,10 +15,6 @@ __pycache__/
 *.ipynb_checkpoints
 
 
-# ── Reports — generated images
-reports/*.png
-reports/*.jpg
-
 # ── IDE
 .vscode/
 .idea/
