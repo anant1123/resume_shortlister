@@ -14,6 +14,19 @@ __pycache__/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
+# ── Data — all large files
+data/raw/
+data/processed/
+Resume.csv
+*.csv
+
+# ── Models — large pkl files
+models/*.pkl
+models/*.joblib
+
+# ── Reports — generated images
+reports/*.png
+reports/*.jpg
 
 # ── IDE
 .vscode/
@@ -32,3 +45,6 @@ logs/
 # ── UV / pip
 uv.lock
 *.lock
+
+# ── HuggingFace cache
+.cache/

@@ -10,12 +10,17 @@ import matplotlib.pyplot as plt
 import re
 from groq import Groq
 from dotenv import load_dotenv
+from huggingface_hub import hf_hub_download
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Load .env file
 load_dotenv()
+
+# ── HuggingFace config
+HF_TOKEN = os.getenv("HF_TOKEN")
+HF_REPO  = os.getenv("HF_REPO", "your-hf-username/resume-shortlister")
 
 # ─────────────────────────────────────────
 # PAGE CONFIG
@@ -124,13 +129,43 @@ junior_keywords = ['junior','entry','fresher','intern',
 # ─────────────────────────────────────────
 @st.cache_resource
 def load_models():
-    model           = joblib.load(f"{MODELS_DIR}/final_model.pkl")
-    tfidf           = joblib.load(f"{MODELS_DIR}/tfidf_vectorizer.pkl")
-    embedding_model = joblib.load(f"{MODELS_DIR}/embedding_model.pkl")
-    explainer       = joblib.load(f"{MODELS_DIR}/shap_explainer.pkl")
+    """
+    Load models from HuggingFace Hub if HF_TOKEN is set,
+    otherwise fall back to local ../models/ directory.
+    """
+    use_hf = HF_TOKEN and HF_REPO
 
-    with open(f"{MODELS_DIR}/feature_cols.json") as f:
-        feature_cols = json.load(f)
+    def load_pkl(filename):
+        if use_hf:
+            path = hf_hub_download(
+                repo_id  = HF_REPO,
+                filename = f"models/{filename}",
+                token    = HF_TOKEN
+            )
+        else:
+            path = f"{MODELS_DIR}/{filename}"
+        return joblib.load(path)
+
+    def load_json(filename):
+        if use_hf:
+            path = hf_hub_download(
+                repo_id  = HF_REPO,
+                filename = f"models/{filename}",
+                token    = HF_TOKEN
+            )
+        else:
+            path = f"{MODELS_DIR}/{filename}"
+        with open(path) as f:
+            return json.load(f)
+
+    model           = load_pkl("final_model.pkl")
+    tfidf           = load_pkl("tfidf_vectorizer.pkl")
+    embedding_model = load_pkl("embedding_model.pkl")
+    explainer       = load_pkl("shap_explainer.pkl")
+    feature_cols    = load_json("feature_cols.json")
+
+    source = "HuggingFace Hub" if use_hf else "local ../models/"
+    print(f"✅ Models loaded from: {source}")
 
     return model, tfidf, embedding_model, explainer, feature_cols
 
