@@ -30,6 +30,10 @@ MODEL_FILES = [
     MODELS_DIR / "best_params.json",
 ]
 
+DATA_FILES = [
+    BASE_DIR / "data" / "processed" / "cleaned_resumes.csv",
+]
+
 def upload_models():
     print(f"Logging in to HuggingFace...")
     login(token=HF_TOKEN)
@@ -44,16 +48,29 @@ def upload_models():
     )
     print(f"✅ Repo ready: {HF_REPO}")
 
-    # Upload each file
+    # Upload model files
     for filepath in MODEL_FILES:
         if not filepath.exists():
             print(f"⚠️  Skipping {filepath.name} — file not found")
             continue
-
         print(f"Uploading {filepath.name}...")
         api.upload_file(
             path_or_fileobj = str(filepath),
             path_in_repo    = f"models/{filepath.name}",
+            repo_id         = HF_REPO,
+            token           = HF_TOKEN
+        )
+        print(f"✅ Uploaded: {filepath.name}")
+
+    # Upload data files
+    for filepath in DATA_FILES:
+        if not filepath.exists():
+            print(f"⚠️  Skipping {filepath.name} — file not found")
+            continue
+        print(f"Uploading {filepath.name}...")
+        api.upload_file(
+            path_or_fileobj = str(filepath),
+            path_in_repo    = f"data/{filepath.name}",
             repo_id         = HF_REPO,
             token           = HF_TOKEN
         )

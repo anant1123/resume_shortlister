@@ -169,13 +169,20 @@ def load_models():
 
     return model, tfidf, embedding_model, explainer, feature_cols
 
+# ── GitHub raw URL for JDs dataset
+GITHUB_RAW = "https://raw.githubusercontent.com/anantkhandelwal/resume-shortlister/master/data/processed/cleaned_resumes.csv"
+
 @st.cache_data
 def load_naukri_jds():
     try:
-        df = pd.read_csv(f"{DATA_DIR}/processed/cleaned_resumes.csv")
-        return df
+        # Load from GitHub raw URL (works both local and deployed)
+        return pd.read_csv(GITHUB_RAW)
     except:
-        return pd.DataFrame()
+        try:
+            # Fall back to local
+            return pd.read_csv(f"{DATA_DIR}/processed/cleaned_resumes.csv")
+        except:
+            return pd.DataFrame()
 
 # ─────────────────────────────────────────
 # HELPER FUNCTIONS

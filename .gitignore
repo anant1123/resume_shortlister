@@ -14,11 +14,12 @@ __pycache__/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# ── Data — all large files
+# ── Data — large files
 data/raw/
-data/processed/
 Resume.csv
-*.csv
+data/processed/X_features.csv
+data/processed/featured_df.csv
+data/processed/y_labels.csv
 
 # ── Models — large pkl files
 models/*.pkl
