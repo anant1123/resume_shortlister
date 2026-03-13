@@ -7,7 +7,7 @@ sentence-transformers
 shap
 optuna
 pymupdf
-streamlit
+streamlit>=1.32.0
 groq
 python-dotenv
 joblib
@@ -16,3 +16,5 @@ seaborn
 spacy
 langchain
 tqdm
+huggingface_hub
+altair>=5.0.0
