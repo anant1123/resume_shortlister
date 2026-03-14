@@ -170,7 +170,7 @@ def load_models():
     return model, tfidf, embedding_model, explainer, feature_cols
 
 # ── GitHub raw URL for JDs dataset
-GITHUB_RAW = "https://raw.githubusercontent.com/anantkhandelwal/resume-shortlister/master/data/processed/cleaned_resumes.csv"
+GITHUB_RAW = "https://raw.githubusercontent.com/anant1123/resume_shortlister/master/data/processed/cleaned_resumes.csv"
 
 @st.cache_data
 def load_naukri_jds():
